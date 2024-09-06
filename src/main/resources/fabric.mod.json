@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "id": "extracrafting",
+  "version": "${version}",
+
+  "name": "Extra Crafting",
+  "description": "Adds craft for blocks and items that hadn't one",
+  "authors": [
+    "Bread (with a lot of help)"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+
+	"icon": "icon.png",
+  "license": "CC0-1.0",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+			"cursedbread.extracrafting.CraftingMain"
+    ],
+		"beforeGameStart": [
+			"cursedbread.extracrafting.CraftingMain"
+		],
+		"afterGameStart": [
+			"cursedbread.extracrafting.CraftingMain"
+		],
+		"recipesReady": [
+			"cursedbread.extracrafting.CraftingMain"
+		]
+	},
+  "mixins": [
+      "extracrafting.mixins.json"
+  ],
+
+  "depends": {
+		"minecraft": "^7.2-beta",
+    "fabricloader": ">=0.15.5"
+  },
+  "suggests": {
+  }
+}
