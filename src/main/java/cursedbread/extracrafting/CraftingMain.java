@@ -38,6 +38,22 @@ public class CraftingMain implements ModInitializer, GameStartEntrypoint, Recipe
 			.addInput(Block.tallgrass)
 			.create("brickStonePolishedMossy", new ItemStack(Block.brickStonePolishedMossy, 1));
 		RecipeBuilder.Shapeless(MOD_ID)
+			.addInput(Block.stone)
+			.addInput(Block.tallgrass)
+			.create("mossStone", new ItemStack(Block.mossStone, 1));
+		RecipeBuilder.Shapeless(MOD_ID)
+			.addInput(Block.basalt)
+			.addInput(Block.tallgrass)
+			.create("mossBasalt", new ItemStack(Block.mossBasalt, 1));
+		RecipeBuilder.Shapeless(MOD_ID)
+			.addInput(Block.limestone)
+			.addInput(Block.tallgrass)
+			.create("mossLimestone", new ItemStack(Block.mossLimestone, 1));
+		RecipeBuilder.Shapeless(MOD_ID)
+			.addInput(Block.granite)
+			.addInput(Block.tallgrass)
+			.create("mossGranite", new ItemStack(Block.mossGranite, 1));
+		RecipeBuilder.Shapeless(MOD_ID)
 			.addInput(Block.cobbleStone)
 			.addInput(Block.tallgrass)
 			.create("cobbleStoneMossy", new ItemStack(Block.cobbleStoneMossy, 1));
@@ -45,6 +61,10 @@ public class CraftingMain implements ModInitializer, GameStartEntrypoint, Recipe
 			.addInput(Block.grass)
 			.addInput(Item.toolClock)
 			.create("grassRetro", new ItemStack(Block.grassRetro, 1));
+		RecipeBuilder.Shapeless(MOD_ID)
+			.addInput(Block.saplingOak)
+			.addInput(Item.toolClock)
+			.create("saplingOakRetro", new ItemStack(Block.saplingOakRetro, 1));
 		RecipeBuilder.Shapeless(MOD_ID)
 			.addInput(Block.dirtScorched)
 			.addInput(Item.oreRawGold)
@@ -61,6 +81,16 @@ public class CraftingMain implements ModInitializer, GameStartEntrypoint, Recipe
 			.addInput('P', Item.ammoPebble)
 			.addInput('I', Block.ice)
 			.create("cobblePermafrost", new ItemStack(Block.cobblePermafrost, 1));
+		RecipeBuilder.Shaped(MOD_ID)
+			.setShape("MMM", "BRB", "MMM")
+			.addInput('M', Block.cobbleStoneMossy)
+			.addInput('B', Item.bone)
+			.addInput('R', Block.blockRedstone)
+			.create("motionsensorIdle", new ItemStack(Block.motionsensorIdle, 1));
+		RecipeBuilder.Shaped(MOD_ID)
+			.setShape("MMM", "MMM", "MMM")
+			.addInput('M', Block.mesh)
+			.create("mobspawnerDeactivated", new ItemStack(Block.mobspawnerDeactivated, 1));
 
 		RecipeBuilder.Furnace(MOD_ID)
 			.setInput(Block.blockClay)
@@ -72,7 +102,31 @@ public class CraftingMain implements ModInitializer, GameStartEntrypoint, Recipe
 		RecipeBuilder.Trommel(MOD_ID)
 			.setInput(Item.bucketWater)
 			.addEntry(new WeightedRandomLootObject(Block.spongeWet.getDefaultStack(), 0, 1), 5)
+			.addEntry(new WeightedRandomLootObject(Block.algae.getDefaultStack(), 0, 10), 95)
 			.create("spongeWet");
+		RecipeBuilder.Trommel(MOD_ID)
+			.setInput(Block.cobbleStone)
+			.addEntry(new WeightedRandomLootObject(Block.gravel.getDefaultStack(), 1, 1), 1)
+			.create("gravel");
+		RecipeBuilder.ModifyTrommel("minecraft", "gravel")
+			.addEntry(new WeightedRandomLootObject(Block.sand.getDefaultStack(), 1, 1), 100);
+		RecipeBuilder.ModifyTrommel("minecraft", "sand")
+			.addEntry(new WeightedRandomLootObject(Block.saplingPalm.getDefaultStack(), 1, 1), 1)
+			.addEntry(new WeightedRandomLootObject(Block.sugarcane.getDefaultStack(), 1, 1), 5)
+			.addEntry(new WeightedRandomLootObject(Block.cactus.getDefaultStack(), 1, 1), 5);
+		RecipeBuilder.Trommel(MOD_ID)
+			.setInput(Block.grass)
+			.addEntry(new WeightedRandomLootObject(Item.seedsWheat.getDefaultStack(), 1, 1), 25)
+			.addEntry(new WeightedRandomLootObject(Item.seedsPumpkin.getDefaultStack(), 1, 1), 25)
+			.addEntry(new WeightedRandomLootObject(Block.saplingOak.getDefaultStack(), 1, 1), 6.25)
+			.addEntry(new WeightedRandomLootObject(Block.saplingBirch.getDefaultStack(), 1, 1), 6.25)
+			.addEntry(new WeightedRandomLootObject(Block.saplingCacao.getDefaultStack(), 1, 1), 6.25)
+			.addEntry(new WeightedRandomLootObject(Block.saplingCherry.getDefaultStack(), 1, 1), 6.25)
+			.addEntry(new WeightedRandomLootObject(Block.saplingEucalyptus.getDefaultStack(), 1, 1), 6.25)
+			.addEntry(new WeightedRandomLootObject(Block.saplingShrub.getDefaultStack(), 1, 1), 6.25)
+			.addEntry(new WeightedRandomLootObject(Block.saplingThorn.getDefaultStack(), 1, 1), 6.25)
+			.addEntry(new WeightedRandomLootObject(Block.saplingPine.getDefaultStack(), 1, 1), 6.25)
+			.create("grasstromelling");
 	}
 
 	@Override
